@@ -1,0 +1,29 @@
+<div class="page">
+    <aside class="content journey-options">
+        <div class="filter-vehicles">
+            <label>Vehicle Type</label><hr width="100%">
+            <input id="btnAll" class="vehicle-filter-button" type="button" value="All" ng-click="testFunc($event)"></input>
+            <input id="btnAirplane" class="vehicle-filter-button" type="button" value="Airplane" ng-click="testFunc($event)"></input>
+            <input id="btnBoat" class="vehicle-filter-button" type="button" value="Boat" ng-click="testFunc($event)"></input>
+            <input id="btnBus" class="vehicle-filter-button" type="button" value="Bus" ng-click="testFunc($event)"></input>
+            <input id="btnTrain" class="vehicle-filter-button" type="button" value="Train" ng-click="testFunc($event)"></input>
+        </div>
+        <div id="destinationsFilter" class="filter-destinations">
+            <label>Destinations</label><hr width="100%">
+            <input id="btnDestAll" class="destination-filter-button" type="button" value="All" ng-click="asdf($event)">
+            <input id="btnDest{{$index}}" class="destination-filter-button" type="button" value="{{item}}" ng-repeat="item in destinations" ng-click="asdf($event)">
+        </div>
+    </aside>
+    <aside id="journeyList" class="content journey-list">
+        <div id="journey{{$index}}" class="journeyData" ng-repeat="item in journeys">
+            <img src="{{GetVehicleImage(item.vehicleModel)}}" width="200px" height="125px">
+            <h5>
+                Starting Location: {{item.startLocation}}<br>
+                Destination: {{item.destination}}<br>
+                Distance: {{item.distance}} km<br>
+                Price: {{item.price}} BGN<br>
+                Transport: {{QueryVehicleType(item.vehicleModel)}}
+            </h5>
+        </div>
+    </aside>
+</div>

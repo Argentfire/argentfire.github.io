@@ -1,0 +1,18 @@
+<div class="page" ng-controller="journeyController">
+    <aside class="content journey-options">
+        <div class="filter-vehicles">
+            <label>Vehicle Type</label><hr width="100%">
+            <input id="btnAll" type="button" value="All" ng-click="testFunc($event)"></input>
+            <input id="btnAirplane" type="button" value="Airship" ng-click="testFunc($event)"></input>
+            <input id="btnBoat" type="button" value="Boat" ng-click="testFunc($event)"></input>
+            <input id="btnBus" type="button" value="Bus" ng-click="testFunc($event)"></input>
+            <input id="btnTrain" type="button" value="Train" ng-click="testFunc($event)"></input>
+        </div>
+        <div id="destinationsFilter" class="filter-destinations">
+            <label>Destinations</label><hr width="100%">
+            
+        </div>
+    </aside>
+    <aside id="journeyList" class="content journey-list">
+    </aside>
+</div>

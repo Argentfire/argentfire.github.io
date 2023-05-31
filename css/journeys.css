@@ -1,0 +1,184 @@
+/*#region Journey Options*/
+.content.journey-options {
+    margin-left: 10px;
+    padding: 5px 5px;
+    /* height: auto; */
+    width: 20%;
+    /* list-style: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    /* justify-content: space-between; */
+    
+    /* align-items: left; */
+
+    background-color: rgba(121, 165, 181, 0.85);
+    margin-top: 15px;
+    margin-right: 5px;
+
+    border-style: solid;
+    border-color: white;
+    border-width: 1.45px;
+    border-radius: 10px 10px; /*20px 20px;*/
+}
+
+.filter-vehicles {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.content label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    color: #FFF;
+    /* flex-grow: 0;*/
+    flex-shrink: 2;
+}
+
+.journey-options input {    
+    /* flex-shrink: 1;
+    flex-grow: 1; */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    color: #FFF;
+    background-color: rgba(121, 165, 181, 1);
+    text-decoration: none;
+    flex-basis: 100%;;
+    /* flex-shrink: 2; */
+
+    border-style: none;
+    border-radius: 10px 10px;
+    padding: 5px 10px;
+    min-width: 15px;
+    margin: 5px 5px;
+    transition: background-color 1s;
+}
+
+.journey-options input:hover {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(74, 98, 107, .85);
+}
+
+.filter-destinations {
+    display: flex;
+    flex-direction: column;
+}
+/*#endregion*/
+
+/*#region Journey List*/
+.content.journey-list {
+    margin: 25px 30px;
+    padding: 10px 10px;
+    width: 100%;
+    border-style: none;
+    border-radius: 15px;
+    background-color: rgba(121, 165, 181, 0.85);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.journeyData {
+    /* margin-left: 5px; */
+    padding: 15px 25px;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 20px;
+    background-color: rgba(74, 98, 107, .85);
+    border-style: none;
+    border-radius: 15px;
+    width: 200px;
+    /* flex-grow: 0; */
+    /* flex-shrink: 2;
+    flex-basis: auto; */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    transition: linear 750ms, background-color 750ms; 
+}
+
+.journeyData h5 {
+    color: #FFF;
+    font-size: 17px;
+}
+
+.journeyData:hover {
+    background-color: rgba(0, 0, 0, .85);
+    transform: scale(1.12) translate(35px, 35px);
+}
+/*#endregion*/
+
+@media only screen and (max-width: 1180px) {
+    .content label {
+        font-size: 16px;
+    }
+    .content .journey-options {
+        font-size: 14px;
+    }
+    .journey-options input:hover {
+        font-weight: normal;
+    }
+}
+@media only screen and (max-width: 825px) {
+    /* html, body {
+        height:100%;
+    } */
+    header {
+        display:block;
+    }
+    nav {
+        position: fixed;
+        bottom: 0;
+        z-index: 5;
+    }
+    nav ul li a {
+        font-size: 16px;
+    }
+    main .page {
+        flex-direction: column;
+        flex-wrap: wrap;
+        /* justify-content: none; */
+        /* justify-content: left; */
+        /* flex-basis: 5px; */
+    }
+    .content.journey-options {
+        width: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        /* flex-wrap: wrap; */
+    }
+    .content.journey-options label {
+        padding-right: 7.5px;
+        margin-right: 5px;
+        border-right-style: solid;
+        border-right-width: 1px;
+        font-size: 17px;
+    }
+    .content.journey-options hr {
+        display: none;
+    }
+    .content.journey-options input {
+        font-size: 16px;
+        padding: 2.5px 5px;
+        width: 75px;
+    }
+    .content.journey-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto !important;
+    }
+    footer {
+        display: none;
+    }
+    
+}

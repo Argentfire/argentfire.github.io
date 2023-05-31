@@ -1,0 +1,45 @@
+
+            <div class="page">
+                <aside class="filterBox">
+                    <div class="filterByPrice">
+                        <label for="minPriceSlide">Minimal Price</label>
+                        <input id="minPriceSlide" type="range" class="min" min="0" max="1000" ng-model="minPrice">
+                        <input type="number" ng-model="minPrice" required pattern="[0-9]+">
+                        <label for="maxPriceSlide">Maximal Price</label>
+                        <input id="maxPriceSlide" type="range" class="max" min="0" max="1000" ng-model="maxPrice">
+                        <input type="number" ng-model="maxPrice" required pattern="^[0-9]$">
+                        <hr>
+                    </div>
+
+                    <input class="clearFilter" type="button" value="Reset Filter">
+                </aside>
+                </aside>
+                <aside class="ticketsBox">
+                    <div id="ticketsList" class="ticketsList">
+                        <div class="ticketElement" ng-repeat="item in journeys">
+                            <div class="tripData">
+                                <img src="{{GetVehicleImage(item.vehicleModel)}}" width="190px" height="125px">
+                                <h5>
+                                    From: {{item.startLocation}}<br>
+                                    To: {{item.destination}}<br>
+                                    Distance: {{item.distance}}km<br>
+                                    Price: {{item.distance * QueryVehicle(item.vehicleID).pricePerKilometer}} BGN<br>
+                                </h5>
+                            </div>
+                            <div class="ticketControls">
+                                <input class="ticketCountButtonSubtr" type="button" value="-">
+                                <label class="journeyTicketCount"> 1 </label>
+                                <input class="ticketCountButtonAdd" type="button" value="-">
+                            </div>
+                            <button class='addToCart' type='submit'>
+                                <img src='./assets/images/cart_add.svg' width='27px'>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="orderControls">
+                        <input class="finishOrder" type="button" value="Finish Order"/>
+                        <input class="clearCart" type="button" value="Clear Cart"/>
+                    </div>
+                </aside>
+            </div>

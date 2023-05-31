@@ -1,0 +1,190 @@
+.page {
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.filterBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 15px;
+    width: 15%;
+    background-color: rgba(121, 165, 181, 0.85);
+
+    border-style: solid;
+    border-color: white;
+    border-width: 1.45px;
+    border-radius: 10px 10px;
+}
+.filterBox .filterByPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.filterBox .filterByPrice label {
+    font-size: 1.2em;
+    color: #FFF;
+}
+
+.filterBox .filterByPrice input {
+    font-size: 1.2em;
+}
+
+.filterBox .filterByPrice hr {
+    width: 100%;
+    color: #FFF;
+}
+
+.filterBox .clearFilter {
+    padding: 2.5px 5px;
+    background-color: rgb(250, 134, 134);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #FFF;
+
+    border-style: none;
+    border-radius: 10px;
+    
+}
+
+.ticketsBox {
+    width: 100%;
+    border-style: none;
+    border-radius: 15px;
+    background-color: rgba(121, 165, 181, 0.85);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.ticketsList {
+    /* height: 85%; */
+    margin: 15px 10px;
+    padding: 10px 10px;
+    background-color: rgba(121, 165, 181, 0.85);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ticketElement {
+    background-color: rgba(74, 98, 107, .85);
+
+    border-radius: 15px;
+    padding: 15px 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 190px;
+    height: 343px;
+
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 260px; */
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tripData {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ticketElement h5 {
+    color: #FFF;
+    font-size: 16px;
+    /* font-size: 1.15em; */
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.ticketControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.ticketControls label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3em;
+    color: #FFF;
+}
+
+.ticketCountButtonSubtr, .ticketCountButtonAdd {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+    width: 50px;
+    height: 35px;
+}
+
+
+.ticketCountButtonSubtr:hover, .ticketCountButtonAdd:hover {
+    cursor: pointer;
+}
+
+.ticketCountButtonSubtr {
+    background-color: rgb(250, 134, 134);
+}
+
+.ticketCountButtonAdd {
+    background-color: rgb(132, 207, 66);
+}
+.addToCart {
+    border-style: none;
+    border-radius: 5px;
+    background-color: rgb(238, 255, 0);
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.addToCart:hover {
+    cursor: pointer;
+}
+
+.orderControls {
+    /* height: 20%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 5px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.finishOrder, .clearCart {
+    border-style: none;
+    border-radius: 10px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    /* font-weight: 600; */
+
+    padding: 0 10px;
+
+    color: #FFF;
+}
+
+.finishOrder {
+    background-color: rgb(132, 207, 66);
+    height: 35px;
+}
+.clearCart {
+    background-color: rgb(250, 134, 134);
+    height: 35px;
+}
