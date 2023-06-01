@@ -41,7 +41,7 @@
     color: #FFF;
 }
 
-.filterBox .clearFilter {
+.filterBox .clear-filter {
     padding: 2.5px 5px;
     background-color: rgb(250, 134, 134);
     font-family: 'Open Sans', sans-serif;
@@ -54,7 +54,7 @@
     
 }
 
-.ticketsBox {
+.tickets-box {
     width: 100%;
     border-style: none;
     border-radius: 15px;
@@ -64,8 +64,25 @@
     flex-direction: column;
 }
 
-.ticketsList {
-    /* height: 85%; */
+.post-status {
+    display: none;
+    background: rgba(121,165,181,0.85);
+    border-style: none;
+    border-radius: 15px;
+}
+
+.post-status-text {
+    font-size: 2em;
+    font-weight: bolder;
+    font-family: 'Open Sans', sans-serif;
+    color: Green;
+    text-shadow: 1px 1px black;
+
+    height: 2.5px;
+    align-self: center;
+}
+
+.tickets-list {
     margin: 15px 10px;
     padding: 10px 10px;
     background-color: rgba(121, 165, 181, 0.85);
@@ -74,9 +91,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    border-style: none;
+    border-radius: 15px;
 }
 
-.ticketElement {
+.ticket-element {
     background-color: rgba(74, 98, 107, .85);
 
     border-radius: 15px;
@@ -88,39 +107,37 @@
 
     display: flex;
     flex-direction: column;
-    /* flex-basis: 260px; */
     justify-content: space-between;
     gap: 10px;
 }
 
-.tripData {
+.trip-data {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.ticketElement h5 {
+.ticket-element h5 {
     color: #FFF;
     font-size: 16px;
-    /* font-size: 1.15em; */
     font-family: 'Open Sans', sans-serif;
 
 }
 
-.ticketControls {
+.ticket-controls {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.ticketControls label {
+.ticket-controls label {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3em;
     color: #FFF;
 }
 
-.ticketCountButtonSubtr, .ticketCountButtonAdd {
+.ticket-count-button-subtr, .ticket-count-button-add {
     font-size: 1.2em;
     font-weight: bold;
     border-style: none;
@@ -130,18 +147,18 @@
 }
 
 
-.ticketCountButtonSubtr:hover, .ticketCountButtonAdd:hover {
+.ticket-count-button-subtr:hover, .ticket-count-button-add:hover {
     cursor: pointer;
 }
 
-.ticketCountButtonSubtr {
+.ticket-count-button-subtr {
     background-color: rgb(250, 134, 134);
 }
 
-.ticketCountButtonAdd {
+.ticket-count-button-add {
     background-color: rgb(132, 207, 66);
 }
-.addToCart {
+.add-to-cart {
     border-style: none;
     border-radius: 5px;
     background-color: rgb(238, 255, 0);
@@ -153,12 +170,36 @@
     justify-content: space-evenly;
 
 }
-.addToCart:hover {
+.add-to-cart:hover {
     cursor: pointer;
 }
 
-.orderControls {
-    /* height: 20%; */
+.shopping-cart {
+    margin: 15px 10px;
+    padding: 10px 10px;
+    background-color: rgba(121, 165, 181, 0.85);
+    border-style: none;
+    border-radius: 15px;
+}
+
+.shopping-cart h4 {
+    font-size: 24px;
+}
+
+.shopping-cart h5 {
+    font-size: 18px;
+}
+
+.shopping-cart hr {
+    width: 20%;
+    margin-left: 0;
+}
+
+.shopping-cart h4, h5, hr {
+    color: #FFF;
+}
+
+.order-controls {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -167,24 +208,31 @@
     padding-bottom: 10px;
 }
 
-.finishOrder, .clearCart {
+.finish-order, .clear-cart {
     border-style: none;
     border-radius: 10px;
 
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2em;
-    /* font-weight: 600; */
+    font-weight: 600;
 
     padding: 0 10px;
 
     color: #FFF;
 }
 
-.finishOrder {
+.finish-order:hover {
+    cursor: pointer;
+}
+.clear-cart:hover {
+    cursor: pointer;
+}
+
+.finish-order {
     background-color: rgb(132, 207, 66);
     height: 35px;
 }
-.clearCart {
+.clear-cart {
     background-color: rgb(250, 134, 134);
     height: 35px;
 }

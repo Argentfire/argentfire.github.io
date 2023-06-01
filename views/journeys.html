@@ -2,20 +2,20 @@
     <aside class="content journey-options">
         <div class="filter-vehicles">
             <label>Vehicle Type</label><hr width="100%">
-            <input id="btnAll" class="vehicle-filter-button" type="button" value="All" ng-click="testFunc($event)"></input>
-            <input id="btnAirplane" class="vehicle-filter-button" type="button" value="Airplane" ng-click="testFunc($event)"></input>
-            <input id="btnBoat" class="vehicle-filter-button" type="button" value="Boat" ng-click="testFunc($event)"></input>
-            <input id="btnBus" class="vehicle-filter-button" type="button" value="Bus" ng-click="testFunc($event)"></input>
-            <input id="btnTrain" class="vehicle-filter-button" type="button" value="Train" ng-click="testFunc($event)"></input>
+            <input id="btn-all" class="vehicle-filter-button" type="button" value="All" ng-click="FilterByVehicle($event)"></input>
+            <input id="btn-airplane" class="vehicle-filter-button" type="button" value="Airplane" ng-click="FilterByVehicle($event)"></input>
+            <input id="btn-boat" class="vehicle-filter-button" type="button" value="Boat" ng-click="FilterByVehicle($event)"></input>
+            <input id="btn-bus" class="vehicle-filter-button" type="button" value="Bus" ng-click="FilterByVehicle($event)"></input>
+            <input id="btn-train" class="vehicle-filter-button" type="button" value="Train" ng-click="FilterByVehicle($event)"></input>
         </div>
-        <div id="destinationsFilter" class="filter-destinations">
+        <div id="destinations-filter" class="filter-destinations">
             <label>Destinations</label><hr width="100%">
-            <input id="btnDestAll" class="destination-filter-button" type="button" value="All" ng-click="asdf($event)">
-            <input id="btnDest{{$index}}" class="destination-filter-button" type="button" value="{{item}}" ng-repeat="item in destinations" ng-click="asdf($event)">
+            <input id="btn-dest-all" class="destination-filter-button" type="button" value="All" ng-click="FilterByDestination($event)">
+            <input id="btn-dest{{$index}}" class="destination-filter-button" type="button" value="{{item}}" ng-repeat="item in destinations" ng-click="FilterByDestination($event)">
         </div>
     </aside>
-    <aside id="journeyList" class="content journey-list">
-        <div id="journey{{$index}}" class="journeyData" ng-repeat="item in journeys">
+    <aside id="journey-list" class="content journey-list">
+        <div id="journey{{$index}}" class="journey-data" ng-repeat="item in journeys">
             <img src="{{GetVehicleImage(item.vehicleModel)}}" width="200px" height="125px">
             <h5>
                 Starting Location: {{item.startLocation}}<br>

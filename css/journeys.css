@@ -87,7 +87,7 @@
     gap: 15px;
 }
 
-.journeyData {
+.journey-data {
     /* margin-left: 5px; */
     padding: 15px 25px;
     font-family: 'Open-Sans', sans-serif;
@@ -107,12 +107,12 @@
     transition: linear 750ms, background-color 750ms; 
 }
 
-.journeyData h5 {
+.journey-data h5 {
     color: #FFF;
     font-size: 17px;
 }
 
-.journeyData:hover {
+.journey-data:hover {
     background-color: rgba(0, 0, 0, .85);
     transform: scale(1.12) translate(35px, 35px);
 }

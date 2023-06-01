@@ -2,44 +2,55 @@
             <div class="page">
                 <aside class="filterBox">
                     <div class="filterByPrice">
-                        <label for="minPriceSlide">Minimal Price</label>
-                        <input id="minPriceSlide" type="range" class="min" min="0" max="1000" ng-model="minPrice">
+                        <label for="min-price-slide">Minimal Price</label>
+                        <input id="min-price-slide" type="range" class="min" min="0" max="1000" ng-model="minPrice">
                         <input type="number" ng-model="minPrice" required pattern="[0-9]+">
-                        <label for="maxPriceSlide">Maximal Price</label>
-                        <input id="maxPriceSlide" type="range" class="max" min="0" max="1000" ng-model="maxPrice">
+                        <label for="max-price-slide">Maximal Price</label>
+                        <input id="max-price-slide" type="range" class="max" min="0" max="1000" ng-model="maxPrice">
                         <input type="number" ng-model="maxPrice" required pattern="^[0-9]$">
                         <hr>
                     </div>
 
-                    <input class="clearFilter" type="button" value="Reset Filter">
+                    <input class="clear-filter" type="button" value="Reset Filter">
                 </aside>
                 </aside>
-                <aside class="ticketsBox">
-                    <div id="ticketsList" class="ticketsList">
-                        <div class="ticketElement" ng-repeat="item in journeys">
-                            <div class="tripData">
+                <aside class="tickets-box">
+                    <div id="post-status" class="post-status">
+                        <h3 id="post-status-text" class="post-status-text">{{transactionStatus}}</h3>
+                    </div>
+                    <div id="tickets-list" class="tickets-list">
+                        <div id="ticket-card{{$index}}" class="ticket-element" ng-repeat="item in journeys">
+                            <div class="trip-data">
                                 <img src="{{GetVehicleImage(item.vehicleModel)}}" width="190px" height="125px">
-                                <h5>
+                                <h5 id="journey-details{{$index}}">
                                     From: {{item.startLocation}}<br>
                                     To: {{item.destination}}<br>
                                     Distance: {{item.distance}}km<br>
                                     Price: {{item.distance * QueryVehicle(item.vehicleID).pricePerKilometer}} BGN<br>
                                 </h5>
                             </div>
-                            <div class="ticketControls">
-                                <input class="ticketCountButtonSubtr" type="button" value="-">
-                                <label class="journeyTicketCount"> 1 </label>
-                                <input class="ticketCountButtonAdd" type="button" value="-">
+                            <div class="ticket-controls">
+                                <input id="btn-lower-ticket-count{{$index}}" class="ticket-count-button-subtr" type="button" value="-" ng-click="LowerTicketCount($event)">
+                                <label id="lbl-ticket-count{{$index}}" class="journeyTicketCount">1</label>
+                                <input id="btn-raise-ticket-count{{$index}}" class="ticket-count-button-add" type="button" value="+" ng-click="RaiseTicketCount($event)">
                             </div>
-                            <button class='addToCart' type='submit'>
-                                <img src='./assets/images/cart_add.svg' width='27px'>
+                            <button id="add-to-cart{{$index}}" class='add-to-cart' type='submit' ng-click="AddToCart($event)">
+                                <img id="add-to-cart{{$index}}" src='./assets/images/cart_add.svg' width='27px'>
                                 Add to Cart
                             </button>
                         </div>
                     </div>
-                    <div class="orderControls">
-                        <input class="finishOrder" type="button" value="Finish Order"/>
-                        <input class="clearCart" type="button" value="Clear Cart"/>
+                    <div class="shopping-cart">
+                        <h4>Shopping Cart:</h4>
+                        <h5 ng-repeat="item in tickets">
+                            Ticket #{{$index}}: {{item.price}} BGN
+                        </h5>
+                        <hr>
+                        <h5>Total:{{getTotalPrice()}} BGN<br></h5><!-- [{{item.startLocation}} -> {{item.destination}}]-->
+                    </div>
+                    <div class="order-controls">
+                        <input class="finish-order" type="button" value="Finish Order" ng-click="finish-order()"/>
+                        <input class="clear-cart" type="button" value="Clear Cart" ng-click="clear-cart()"/>
                     </div>
                 </aside>
             </div>

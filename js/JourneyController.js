@@ -1,29 +1,23 @@
 (function() {
     var module = angular.module("Agency");
 
-    var JourneyController = function($scope, $http) {
+    var JourneyController = function($scope, agency) {
         
         var journeys = [];
-        var onJourneysComplete = function(response) {
-            $scope.journeys = response.data;
-            journeys = response.data;
+        var onJourneysComplete = function(data) {
+            $scope.journeys = data;
+            journeys = data;
             
             var destinations = [];
-            for(var item of response.data) {
+            for(var item of journeys) {
                 if(destinations.includes(item.destination) == false)
                 {
                     destinations.push(item.destination);
                 }
             }
             $scope.destinations = destinations;
-            document.getElementById("btnAll").style.backgroundColor = "rgba(82, 124, 139,1)";
-            document.getElementById("btnDestAll").style.backgroundColor = "rgba(82, 124, 139,1)";
-            // AddFilterDestBtnsClickEvent();
-        }
-
-        $scope.asdf = function(event) {
-            var elementId = event.target.id;
-            alert("Element ID: " + elementId);
+            document.getElementById("btn-all").style.backgroundColor = "rgba(82, 124, 139,1)";
+            document.getElementById("btn-dest-all").style.backgroundColor = "rgba(82, 124, 139,1)";
         }
 
         function GetParentElement(elem) {
@@ -33,19 +27,19 @@
             return parent;
         }
 
-        $scope.testFunc = function(e)
+        $scope.FilterByVehicle = function(e)
         {
             var elem = angular.element(e.srcElement);
             var triggerType = elem.attr('id');
 
-            for(var foo of document.getElementsByClassName("vehicle-filter-button")) {
-                foo.style.backgroundColor = "rgba(121, 165, 181, 1)";
+            for(var button of document.getElementsByClassName("vehicle-filter-button")) {
+                button.style.backgroundColor = "rgba(121, 165, 181, 1)";
             }
 
             elem.css('background', 'rgba(82, 124, 139,1)');
             
             var veh = triggerType.replace("btn", "");
-            var journeyElements = document.getElementsByClassName("journeyData");
+            var journeyElements = document.getElementsByClassName("journey-data");
             var destinationFilters = document.getElementsByClassName("destination-filter-button");
             for(var item of journeyElements) {
                 item.style.display = "none";
@@ -74,7 +68,7 @@
                 for(var item of destinationFilters) {
                     for(var i = 0; i < filteredJourneys.length; i++)
                     {
-                        if(filteredJourneys[i].innerHTML.includes(item.value)) {
+                        if(filteredJourneys[i].innerHTML.includes("Destination: " + item.value)) {
                             item.style.display = "block";
                         }
                     }
@@ -82,14 +76,53 @@
             }
         }
 
+        $scope.FilterByDestination = function(e) {
+            var elemID = GetElementID(e);
+            console.log(elemID);
+
+            for(var button of document.getElementsByClassName("destination-filter-button")) {
+                button.style.backgroundColor = "rgba(121, 165, 181, 1)";
+            }
+
+            GetElement(e).css('background', 'rgba(82, 124, 139,1)');
+
+            var journeys = document.getElementsByClassName("journey-data");
+            if(elemID == "btn-dest-all") {
+                for(item of journeys) {
+                    item.style.display = "flex";
+                }
+            }
+            else {
+                for(item of journeys) {
+                    item.style.display = "none";
+                    if(item.innerHTML.includes("Destination: " + GetClickedButtonText(e))) {
+                        item.style.display = "flex";
+                    }
+                }
+            }
+        }
+
+        function GetElement(e) {
+            return angular.element(e.srcElement);
+        }
+
+        function GetElementID(element) {
+            var elem = angular.element(element.srcElement);
+            return elem.attr("id");
+        }
+
+        function GetClickedButtonText(e) {
+            var elem = angular.element(e.srcElement);
+            return elem.attr("value");
+        }
 
 
         var filterDest = function(e) {
             var elem = angular.element(e.srcElement);
             var triggerType = elem.attr('id');
             console.log(triggerType);
-            var dest = triggerType.replace("btnDest", "");
-            var iJourneys = document.getElementsByClassName("journeyData");
+            var dest = triggerType.replace("btn-dest", "");
+            var iJourneys = document.getElementsByClassName("journey-data");
             for(var i of iJourneys)
                 i.style.display = "block";
             if(dest.includes("All") == false) {
@@ -122,8 +155,9 @@
                 btn.addEventListener("click", filterDest);
             }
         }
-
-        $http.get("https://localhost:7084/Journey").then(onJourneysComplete);
+        
+        agency.getDataArray("Journey").then(onJourneysComplete);
+        // $http.get("https://localhost:7084/Journey").then(onJourneysComplete);
     };
 
     module.controller("JourneyController", JourneyController);

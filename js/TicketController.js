@@ -1,78 +1,112 @@
 (function() { 
     var module = angular.module("Agency");
 
-    var TicketController = function($scope, $http, $injector) {
+    var TicketController = function($scope, agency, $interval) {
         $scope.minPrice = 0;
         $scope.maxPrice = 100;
-
+        $scope.transactionStatus = "";
         var journeys;
         var vehicles;
+        $scope.tickets = [];
 
-        var HandleJourneyData = function(response) { 
-            $scope.journeys = response.data;
-            journeys = response.data;
-            // DisplayTicketOptions(response.data);
+        var HandleJourneyData = function(data) { 
+            $scope.journeys = data;
+            journeys = data;
         }
 
-        var HandleVehicleData = function(response) {
-            $scope.vehicles = response.data;
-            vehicles = response.data;
+        var HandleVehicleData = function(data) {
+            $scope.vehicles = data;
+            vehicles = data;
         }
 
-        var LowerTicketCount = function(e) {
+        $scope.LowerTicketCount = function(e) {
             var elem = angular.element(e.srcElement);
-            var triggerType = elem.attr('id');
-            var parentEle = document.getElementById(triggerType).parentElement;
+            var ticketCardIdx = GetNumberFromString(elem.attr('id'));
+            var ticketCountLabel = document.getElementById(`lbl-ticket-count${ticketCardIdx}`);
+            var ticketCount = Number(ticketCountLabel.textContent);
+            if(ticketCount >= 1) {
+                ticketCountLabel.textContent = ticketCount - 1;
+            }
         }
 
-        var RaiseTicketCount = function(e) {
+        $scope.RaiseTicketCount = function(e) {
             var elem = angular.element(e.srcElement);
-            var triggerType = elem.attr('id');
-            var parentEle = document.getElementById(triggerType).parentElement;
-
-            var ticketCount = parentEle.getElementsByClassName("journeyTicketCount")[0];
-
-            alert(ticketCount.textContent);
+            var ticketCardIdx = GetNumberFromString(elem.attr('id'));
+            var ticketCountLabel = document.getElementById(`lbl-ticket-count${ticketCardIdx}`);
+            var ticketCount = Number(ticketCountLabel.textContent);
+            if(ticketCount < 10) {
+                ticketCountLabel.textContent = ticketCount + 1;
+            }
             
         }
 
-        var AddToCart = function (e) {
-            var elem = angular.element(e.srcElement);
-            var triggerType = elem.attr('id');
-            var parentEle = document.getElementById(triggerType).parentElement;
-            // var parentEle = GetParentElement(elem);
-
-            var ticketCount = parentEle.getElementsByClassName("journeyTicketCount")[0];
-
-            alert(ticketCount.textContent);
-        }
-
-        function LowerTicketCountClickEvent() {
-            var buttons = document.getElementsByClassName("ticketCountButtonSubtr");
-            for(var btn of buttons) {
-                btn.addEventListener("click", LowerTicketCount);
+        $scope.AddToCart = function (e) {
+            try {
+                var elem = angular.element(e.srcElement);
+                var ticketCardIdx = GetNumberFromString(elem.attr('id'));
+                var journeyDetails = document.getElementById(`journey-details${ticketCardIdx}`);
+                var ticketCountLabel = document.getElementById(`lbl-ticket-count${ticketCardIdx}`);
+                console.log(ticketCountLabel.id);
+                var ticketCount = Number(ticketCountLabel.textContent);
+                let jrny = journeys[ticketCardIdx];
+                let jrnyPrice = 0;
+                const regex = /Price: (\d+)/;
+                const matches = journeyDetails.innerText.match(regex);
+                if (matches && matches.length > 1) {
+                    jrnyPrice = parseInt(matches[1]);
+                }
+                
+                for(let i = 0; i < ticketCount; i++) {
+                    let ticket = new Ticket(jrny.journeyID, jrnyPrice);
+                    $scope.tickets.push(ticket);
+                }
+                console.log($scope.tickets);
+            } catch (err) {
+                alert("An error ocurred!\nPlease alert developers!");
             }
         }
 
-        function RaiseTicketCountClickEvent() {
-            var buttons = document.getElementsByClassName("ticketCountButtonAdd");
-            for(var btn of buttons) {
-                btn.addEventListener("click", RaiseTicketCount);
+        $scope.finishOrder = function(e) {
+            try{ 
+                $scope.tickets.forEach((item) => {
+                    agency.postData("Ticket",item).then(SetTransactionStatus);
+                });                
+                $scope.tickets = [];
+            }catch(ex){
+                console.log(ex);
             }
         }
 
-        function AddToCartClickEvent() {
-            var buttons = document.getElementsByClassName("addToCart");
-            for(var btn of buttons) {
-                btn.addEventListener("click", AddToCart);
-            }
+        $scope.clearCart = function(e) {
+            $scope.tickets = [];
         }
 
-        function GetParentElement(elem) {
-            var triggerType = elem.attr('id');
-            var parent = document.getElementById(triggerType).parentElement;
+        function SetTransactionStatus(text) {
+            var statusBlock = document.getElementById("post-status");
+            statusBlock.style.display = "block";
+            var statusText = document.getElementById("post-status-text");
+            $scope.transactionStatus = text;
+            statusText.style.color = "rgba(0, 173, 0, 1)";
+            setTimeout(HideTransactionStatus, 3500);
+        }
 
-            return parent;
+        function HideTransactionStatus(){
+            var statusBlock = document.getElementById("post-status");
+            statusBlock.style.display = "none";
+        }
+
+        function GetNumberFromString(str)
+        {
+            if(str == null) return "";
+            return str.replace(/\D/g, '');
+        }
+
+        $scope.getTotalPrice = function() {
+            let totalPrice = 0;
+            $scope.tickets.forEach(item => {
+                totalPrice += item.price;
+            });
+            return totalPrice;
         }
 
         $scope.QueryVehicle = function(vehicleID) {
@@ -91,12 +125,9 @@
             else if(veh.includes('Bus')) html += "bus.jpg";
             return html;
         }
-        function percentage(percent, total) {
-            return ((percent/ 100) * total).toFixed(2);
-        }
 
-        $http.get("https://localhost:7084/Journey").then(HandleJourneyData);
-        $http.get("https://localhost:7084/Vehicle").then(HandleVehicleData);
+        agency.getDataArray("Journey").then(HandleJourneyData);
+        agency.getDataArray("Vehicle").then(HandleVehicleData);
     }; 
 
     module.controller("TicketController", TicketController);
