@@ -41,6 +41,27 @@
     color: #FFF;
 }
 
+.filterBox .filter-controls {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.filterBox .apply-filter {
+    padding: 2.5px 5px;
+    background-color: rgb(132, 207, 66);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #FFF;
+
+    border-style: none;
+    border-radius: 10px;
+    
+}
+
 .filterBox .clear-filter {
     padding: 2.5px 5px;
     background-color: rgb(250, 134, 134);
@@ -52,6 +73,10 @@
     border-style: none;
     border-radius: 10px;
     
+}
+
+.apply-filter:hover, .clear-filter:hover {
+    cursor: pointer;
 }
 
 .tickets-box {
@@ -235,4 +260,35 @@
 .clear-cart {
     background-color: rgb(250, 134, 134);
     height: 35px;
+}
+
+@media screen and (max-width: 1100px) {
+    .shopping-cart hr {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .filterBox {
+        width: auto;
+        flex-direction: column;
+
+        justify-content: space-between;
+    }
+    
+    .shopping-cart h4 {
+        font-size: 1.2em;
+    }
+    .shopping-cart h5 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .shopping-cart hr {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 390px) {
 }

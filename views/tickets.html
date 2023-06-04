@@ -10,8 +10,10 @@
                         <input type="number" ng-model="maxPrice" required pattern="^[0-9]$">
                         <hr>
                     </div>
-
-                    <input class="clear-filter" type="button" value="Reset Filter">
+                    <div class="filter-controls">
+                        <input class="apply-filter" type="button" value="Apply Filter" ng-click="applyFilter($event)">
+                        <input class="clear-filter" type="button" value="Reset Filter" ng-click="clearFilter($event)">
+                    </div>
                 </aside>
                 </aside>
                 <aside class="tickets-box">
@@ -43,14 +45,14 @@
                     <div class="shopping-cart">
                         <h4>Shopping Cart:</h4>
                         <h5 ng-repeat="item in tickets">
-                            Ticket #{{$index}}: {{item.price}} BGN
+                            Ticket #{{$index + 1}}: {{item.price}} BGN
                         </h5>
                         <hr>
-                        <h5>Total:{{getTotalPrice()}} BGN<br></h5><!-- [{{item.startLocation}} -> {{item.destination}}]-->
+                        <h5>Total: {{getTotalPrice()}} BGN<br></h5><!-- [{{item.startLocation}} -> {{item.destination}}]-->
                     </div>
                     <div class="order-controls">
-                        <input class="finish-order" type="button" value="Finish Order" ng-click="finish-order()"/>
-                        <input class="clear-cart" type="button" value="Clear Cart" ng-click="clear-cart()"/>
+                        <input class="finish-order" type="button" value="Finish Order" ng-click="finishOrder()"/>
+                        <input class="clear-cart" type="button" value="Clear Cart" ng-click="clearCart()"/>
                     </div>
                 </aside>
             </div>

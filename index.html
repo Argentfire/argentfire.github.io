@@ -6,36 +6,48 @@
         <link rel="stylesheet" type="text/css" href="./css/index.css">
         <link rel="stylesheet" type="text/css" href="./css/journeys.css">
         <link rel="stylesheet" type="text/css" href="./css/tickets.css">
+
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script> -->
+        <!-- <script src="moz-extension://4a1310fe-3aed-48a3-bcf6-9e98c87b9f03/model/static/DOMPurify/purify.min.js.map"></script> -->
+
         <script data-require="angular.js@" data-server="1.8.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
         <script data-require="angular-route@*" data-server="1.8.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script type="text/javascript" src="./js/app.js"></script>
         <script type="text/javascript" src="./js/JourneyController.js"></script>
         <script type="text/javascript" src="./js/TicketController.js"></script>
-        <script type="text/javascript" src="./js/Services/AgencyService.js"></script>
+        <script type="text/javascript" src="./js/Services/agency-service.js"></script>
         <script type="text/javascript" src="./js/Components/ticket.js"></script>
+        <!-- <script type="text/javascript" src="./js/login.js"></script> -->
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body ng-app="Agency" ng-cloak>
 
         <header>
-            <nav>
-                <ul>
-                    <li><a href="#!/home">Home</a></li>
-                    <li><a href="#!/journeys">Journeys</a></li>
-                    <li><a href="#!/tickets">Tickets</a></li>
-                    <li><a href="#!/vehicles">Vehicles</a></li>
-                    <li><a href="#!">About Us</a></li>
-                    <li><a href="#!">Contact</a></li>
-                </ul>
-            </nav>
             <div class="headerLogo"><img></div>
+            
         </header>
-
+        
         <main>
+            <!-- <button class="btn btn-primary" ng-controller="LoginController" ng-click="openLoginPopup()">Login</button>
+            <a href="#!/login">Login</a> -->
+            <!-- <div ng-include="'./views/login-template.html'"></div> -->
             <div ng-view></div>
         </main>
+
+        <nav>
+            <ul>
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="#!/journeys">Journeys</a></li>
+                <li><a href="#!/tickets">Tickets</a></li>
+                <li><a href="#!/vehicles">Vehicles</a></li>
+                <li><a href="#!">About Us</a></li>
+                <li><a href="#!">Contact</a></li>
+            </ul>
+        </nav>
 
         <footer>
             <div class="content">

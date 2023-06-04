@@ -19,6 +19,14 @@
             vehicles = data;
         }
 
+        $scope.applyFilter = function(e) {
+            
+        }
+
+        $scope.clearFilter = function(e) {
+            
+        }
+
         $scope.LowerTicketCount = function(e) {
             var elem = angular.element(e.srcElement);
             var ticketCardIdx = GetNumberFromString(elem.attr('id'));

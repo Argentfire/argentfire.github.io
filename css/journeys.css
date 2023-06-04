@@ -133,24 +133,6 @@
     /* html, body {
         height:100%;
     } */
-    header {
-        display:block;
-    }
-    nav {
-        position: fixed;
-        bottom: 0;
-        z-index: 5;
-    }
-    nav ul li a {
-        font-size: 16px;
-    }
-    main .page {
-        flex-direction: column;
-        flex-wrap: wrap;
-        /* justify-content: none; */
-        /* justify-content: left; */
-        /* flex-basis: 5px; */
-    }
     .content.journey-options {
         width: auto;
         flex-direction: row;
@@ -176,9 +158,5 @@
         flex-direction: row;
         flex-wrap: wrap;
         width: auto !important;
-    }
-    footer {
-        display: none;
-    }
-    
+    }    
 }
